@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Electrodomesticos</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- Iconos de Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+</head>
+
+
+<body>
+
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header bg-primary text-light" s>
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Lista de electrodomesticos</strong>
+          </div>
+          <div class="col-md-6 text-end">
+            <button class="btn btn-success btn-sm" id="abrir-modal" data-bs-toggle="modal" data-bs-target="#modal-registro-electrodomestico">
+              <i class="bi bi-plus-circle-fill"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-sm table-striped" id="tabla-electrodomesticos">
+          <colgroup>
+            <col width = "5%">
+            <col width = "20%">
+            <col width = "20%">
+            <col width = "10%">
+            <col width = "5%">
+            <col width = "10%">
+            <col width = "5%">
+            <col width = "10%">
+            <col width = "20%">
+            <col width = "10%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Categoria</th>
+              <th>Nombre</th>
+              <th>Marca</th>
+              <th>Precio</th>
+              <th>Color</th>
+              <th>Stock</th>
+              <th>Garantia</th>
+              <th>Clasificacion Energica</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-end">
+        <button class="btn btn-primary btn-sm" id="actualizar">Actualizar datos</button>
+      </div>
+    </div>
+  </div> <!-- Fin de container -->
+
+  <!-- Zona de modales -->
+  <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+  <div class="modal fade" id="modal-registro-electrodomestico" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-light">
+          <h5 class="modal-title" id="modalTitleId">Registro de Electrodomesticos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formulario-electrodomestico">
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select id="categoria" class="form-select form-select-sm">
+                <option value="">Seleccione</option>
+                <option value="Electrodomesticos del Hogar">Electrodomesticos del Hogar</option>
+                <option value="Electrodomesticos de Lavado">Electrodomesticos de Lavado</option>
+                <option value="Electrodomesticos de Cocina">Electrodomesticos de Cocina</option>
+                <option value="Electrodomesticos de Limpieza">Electrodomesticos de Limpieza</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="nombreelectrodomestico" class="form-label">Nombre</label>
+              <input type="text" class="form-control form-control-sm" id="nombreelectrodomestico">
+            </div>
+            <div class="mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" class="form-control form-control-sm" id="marca">
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="text" class="form-control form-control-sm" id="precio">
+              </div>
+              <div class="col-6  mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="text" class="form-control form-control-sm" id="stock">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="color" class="form-label">Color</label>
+              <input type="text" class="form-control form-control-sm" id="color">
+            </div>
+            <div class="mb-3">
+              <label for="garantia" class="form-label">Garantia</label>
+              <input type="text" class="form-control form-control-sm" id="garantia">
+            </div>
+            <div class="mb-3">
+              <label for="clasificacionenergica" class="form-label">Clasificacion Energica</label>
+              <select id="clasificacionenergica" class="form-select form-select-sm">
+                <option value="">Seleccione</option>
+                <option value="PAE">PAE</option>
+                <option value="Linea Blanca">Linea Blanca</option>
+                <option value="Linea Marron">Linea Marron</option>
+                <option value="Linea Gris">Linea Gris</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" id="guardar-electrodomestico">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Fin zona de modales -->
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function (){
+
+      function mostrarElectrodomestico(){
+        $.ajax({
+          url: './controllers/Electrodomestico.controller.php',
+          type: 'POST',
+          data: { operacion: 'listado'},
+          dataType: 'text',
+          success: function(result){
+            $("#tabla-electrodomesticos tbody").html(result);
+          }
+        });
+      }
+
+      function registrarElectrodomestico(){
+        //Pendiente de validar...
+        if (confirm("¿Está seguro de registrar este nuevo electrodomestico?")){
+          $.ajax({
+            url: './controllers/Electrodomestico.controller.php',
+            type: 'POST',
+            data: {
+              operacion     : 'registrar',
+              categoria                : $("#categoria").val(),
+              nombre                : $("#nombreelectrodomestico").val(),
+              marca                 : $("#marca").val(),
+              precio                :  $("#precio").val(),
+              color                 : $("#color").val(),
+              stock                 : $("#stock").val(),
+              garantia              : $("#garantia").val(),
+              clasificacionenergica        : $("#clasificacionenergica").val()
+            },
+            success: function(result){
+              if (result == ""){
+                //Reiniciar el formulario
+                $("#formulario-electrodomestico")[0].reset();
+                
+                //Actualizar la tabla
+                mostrarElectrodomestico();
+
+                //Cerrar el modal
+                $("#modal-registro-electrodomestico").modal('hide');
+              }
+            }
+          });
+        }
+      }
+
+      //Eventos
+      $("#guardar-electrodomestico").click(registrarElectrodomestico);
+
+      //Al pulsar clic sobre botón ROJO, se elimine el registro
+      //Detectaremos eventos de los objetos creados de manera asíncrona en...
+      $("#tabla-electrodomesticos tbody").on("click", ".eliminar", function (){
+        const idelectrodomesticoEliminar = $(this).data("idelectrodomesticos");
+        if (confirm("¿Está seguro de proceder?")){
+          $.ajax({
+            url: './controllers/Electrodomestico.controller.php',
+            type: 'POST',
+            data: {
+              operacion               : 'eliminar',
+              idelectrodomesticos     : idelectrodomesticoEliminar
+            },
+            success: function(result){
+              if (result == ""){
+                mostrarElectrodomestico();
+              }
+            }
+          });
+        }
+      });
+
+      //Ejecución automática
+      mostrarElectrodomestico();
+
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
